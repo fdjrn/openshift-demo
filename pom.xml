@@ -11,7 +11,7 @@
 
     <groupId>id.fdjrn.msa</groupId>
     <artifactId>openshift-demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1.4</version>
     <name>openshift-demo</name>
     <description>openshift-demo</description>
 
@@ -45,6 +45,23 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <image>
+                        <name>
+                            swamedia.xyz/demo-project/${project.name}:${project.version}
+                        </name>
+                        <env>
+                            <BP_JVM_VERSION>21</BP_JVM_VERSION>
+                        </env>
+                    </image>
+                </configuration>
             </plugin>
         </plugins>
     </build>
